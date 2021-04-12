@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require Rails.root.join('db/seeds/movies')
+require Rails.root.join('db/seeds/screens')
+require Rails.root.join('db/seeds/shows')
+require Rails.root.join('db/seeds/users')
