@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require ./plugins/flickity.pkgd.min
+//= require toastr
