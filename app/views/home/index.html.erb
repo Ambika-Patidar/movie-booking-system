@@ -1,6 +1,6 @@
 
 <!-- Flickity HTML init -->
-<div class="carousel" data-flickity='{ "freeScroll": true }'>
+<div class="carousel" data-flickity='{ "autoPlay": true, "freeScroll": true, "fullScreen": true }'>
   <% @movies.each do |movie| %>
     <div class="carousel-cell">
       <img src="<%= movie.thumbnail_url %>", alt="<%= movie.name %>" >
@@ -10,10 +10,12 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    $('.carousel').flickity()
+  });
+        
     <% unless current_user %>
       $('.carousel-cell').click(function(){
         toastr.warning("Please login to book the show")
       });
     <%end %>
-  });
 </script>

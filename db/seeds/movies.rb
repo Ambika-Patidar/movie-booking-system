@@ -3,6 +3,11 @@ puts "Seeding Movies"
 #create movies
 movies = [
   {
+    name: 'Raabta',
+    thumbnail_url: 'https://1847884116.rsc.cdn77.org/hindi/gallery/movies/raabta/raaabta_poster.jpg',
+    description: 'Raabta is a 2017 Indian Hindi-language romantic action film directed by Dinesh Vijan'
+  },
+  {
     name: 'Dear Zindagi',
     thumbnail_url:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSKF9Xsl2zawu0jCKz4VAOFylgfspKUyTigmXLhxn27_e2awXJ4',
     description:'Dear Zindagi is a 2016 Indian Hindi-language coming-of-age drama film written and directed by Gauri Shinde'

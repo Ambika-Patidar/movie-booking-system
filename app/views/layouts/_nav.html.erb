@@ -4,9 +4,16 @@
       <%= link_to root_path, class: 'navbar-brand' do %>
         <h3 style="font-family: 'Audiowide', cursive;">MOVIES</h3>
       <% end %>
-    <div class="navbar_buttons">
-      <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %>
-      <%= link_to "Log in", new_user_session_path, class: 'btn btn-secondary' %>
+      <% if current_user %>
+        <%= link_to destroy_user_session_path, method: "delete", style: 'color: white;' do %>
+          Sign out
+        <% end %>
+      <% else %>
+        <form class="d-flex" >
+            <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary sign_up'%>
+            <%= link_to "Login", new_user_session_path, class: 'btn btn-secondary' %>
+        </form>
+      <% end %>
     </div>
   </div>
 </header>

@@ -1,5 +1,7 @@
 {
   "name": "movie_booking_system",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "flickity": "^2.2.2"
+  }
 }
