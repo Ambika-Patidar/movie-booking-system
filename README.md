@@ -1,24 +1,36 @@
-# README
+# Movie Booking System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project setup
 
-Things you may want to cover:
+  Ruby version: 2.4.3
+  Rails version: 5.2.5
 
-* Ruby version
+1. Install project dependencies
+  
+```sh
+rake db:create 
+```
 
-* System dependencies
+2. Create database
 
-* Configuration
+```sh
+  rails db:create
+```
 
-* Database creation
+3. Migrate the database
 
-* Database initialization
+```sh
+  rails db:migrate
+```
 
-* How to run the test suite
+4. Populate the database with seed :
 
-* Services (job queues, cache servers, search engines, etc.)
+Initial data for admin, movies, screens, screen_layouts, etc.
 
-* Deployment instructions
+```sh
+rake db:seed
+```
 
-* ...
+## Credentials for Admin Login:
+
+> Email: 'admin@yopmail.com' | Password: 'Test@123'
