@@ -6,5 +6,24 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', confirmations: 'users/confirmations', passwords: 'users/passwords'}
 
   get '/home', to: 'home#index'
-  resources :movies
+  resources :movies do
+    resources :shows do
+      collection do
+        get :get_shows
+      end 
+    end
+  end
+
+  resources :screens do
+    resources :seat_allotments
+  end
+
+  resources :bookings do
+    member do
+      get :pdf
+    end
+    collection do
+      get :search
+    end
+  end
 end

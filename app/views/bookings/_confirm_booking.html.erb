@@ -1,0 +1,45 @@
+<div class="row booking">
+  <div class="col-md-3"></div>
+  <div class="col-md-6" style="margin-top: 80px;">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4 align-qr">
+          <%= generate_qr(booking.booking_id).html_safe %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body" style="padding: 1rem 5rem;">
+            <h5 class="card-title"><%= booking.movie.name %></h5>
+            <p class="card-text"><small class="text-muted">Booking id : <%= booking.booking_id %></small></p>
+            <p class="card-text"><small class="text-muted">Show Date : <%= booking.show.show_date.strftime('%A %d %^b %Y') %></small></p>
+            <p class="card-text"><small class="text-muted">Show Timings : <%= booking.show.time_slot %></small></p>
+            <p class="card-text"><small class="text-muted">Screen : <%= booking.seat_allotments.first.screen_layout.screen.name %></small></p>
+            <p class="card-text"><small class="text-muted">Seat Details:
+              <% booking.seat_allotments.each do |seat|  %>
+                <%= "#{seat.screen_layout.row}-#{seat.screen_layout.seat_number}" %>
+              <% end %>
+            </small></p>
+            <p class="card-text"><small class="text-muted">Amount : <%= booking.price.to_i %></small></p>
+            <% unless params[:remote] %>
+              <%= link_to pdf_booking_path(booking, remote: true), class: "download" do %>
+                <i class="fa fa-download" aria-hidden="true"></i> Download Ticket
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>  
+
+<style type="text/css">
+  .align-qr {
+    padding: 0 45px;
+    padding-top: 60px;
+  }
+
+  a.download{
+    color: #009688;
+    text-decoration: none;
+  }
+</style>

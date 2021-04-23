@@ -5,7 +5,7 @@ class CreateScreenLayouts < ActiveRecord::Migration[5.2]
       t.references :seat, foreign_key: true
       t.integer :category, default: 0
       t.string :row
-
+      
       t.timestamps
     end
   end

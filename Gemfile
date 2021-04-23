@@ -5,6 +5,7 @@ ruby '2.4.3'
 
 #bootstrap
 gem 'bootstrap', '~> 5.0.0.beta1'
+gem 'bootstrap-daterangepicker-rails'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'jquery-rails'
@@ -44,6 +45,19 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+#for PDF download
+gem 'wicked_pdf'  
+gem 'wkhtmltopdf-binary' 
+
+# for QR Code
+gem 'rqrcode'
+
+gem 'momentjs-rails'
+
+
+# for pagination
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

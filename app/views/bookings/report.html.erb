@@ -1,0 +1,40 @@
+<div class="report">
+  <ul class="nav">
+    <li class="nav-item">
+      <%= text_field_tag :filter_date, nil, class: 'date-range form-control', placeholder: 'Select show date range', data: { behavior: 'daterangepicker' }, autocomplete: "off" %>
+      <%= hidden_field_tag :start_date, nil, class: 'start-date' %>
+      <%= hidden_field_tag :end_date, nil, class: 'end-date' %>
+    </li>
+    <li class="nav-item">
+      <%= select_tag :movie, options_for_select(@movies), { class: "form-control", :prompt => "Movie" } %>
+    </li>
+    <li class="nav-item">
+      <%= select_tag :screen, options_for_select(@screens), { class: "form-control", :prompt => "Screen" } %>
+    </li>
+    <li class="nav-item">
+      <%= select_tag :time_slot, options_for_select(@time_slots), { class: "form-control", :prompt => "Time" } %>
+    </li>
+    <li class="nav-item">
+      <%= text_field_tag :booking_id, nil, class: "form-control", placeholder: 'booking id' %>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary search">Search</button>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-primary reset">Reset</button>
+    </li>
+  </ul>
+  <div class="bookings">
+    <%= render partial: 'reports' %>
+  </div>
+</div>
+
+<style type="text/css">
+  .report ul{
+    margin: 10px;
+  }  
+
+  .report li{
+    padding: 5px;
+  }
+</style>

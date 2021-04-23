@@ -1,0 +1,4 @@
+module Constants
+  UPPER_SEATS_COEFFICIENT =  1.5
+  LOWER_SEATS_COEFFICIENT =  1.2
+end

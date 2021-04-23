@@ -1,0 +1,4 @@
+<%= render partial: "booking", collection: @bookings %>
+<div class="custom_pagination">
+  <%= will_paginate @bookings, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

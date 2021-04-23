@@ -12,10 +12,10 @@
   $(document).ready(function(){
     $('.carousel').flickity()
   });
-        
-    <% unless current_user %>
-      $('.carousel-cell').click(function(){
-        toastr.warning("Please login to book the show")
-      });
-    <%end %>
+
+  <% unless current_user %>
+    $('.carousel-cell').click(function(){
+      toastr.warning("Please login to book the show")
+    });
+  <%end %>
 </script>

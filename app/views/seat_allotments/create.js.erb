@@ -1,0 +1,5 @@
+<% if @error.present? %>
+  toastr.error("<%= @error %>");
+<% else %>
+  $('.screen_layout').html("<%= escape_javascript (render partial: 'bookings/receipt' ) %>");
+<% end %>

@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <span class="" style="color: #999;"><%= @movie_shows.first.show_date.strftime('%^a %d %^b %Y') %></span>
+        <% @movie_shows.each do |show| %>
+          <button type="button" class="btn btn-outline-secondary time_slot btn-primary-spacing" value="<%= show.screen_id %>" data="<%= show.id %>"><%= show.time_slot %></button>
+        <% end %>
+    </div>
+  </div>
+</nav>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.time_slot:first').addClass('btn-outline-success');
+    getAjax(`/screens/<%= @movie_shows.first.screen_id %>`, { show_id: "<%= @movie_shows.first.id %>"});
+  });
+
+  $('.time_slot').click(function() {
+    const id = this.value;
+    const show_id = $(this).attr("data");
+    $('.time_slot').removeClass('btn-outline-success');
+    $(this).addClass('btn-outline-success');
+    getAjax(`/screens/${id}`, { show_id: show_id});
+  });
+</script>

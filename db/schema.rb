@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_085737) do
+ActiveRecord::Schema.define(version: 2021_04_21_071913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "show_id"
+    t.bigint "user_id"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "booking_id"
+    t.index ["show_id"], name: "index_bookings_on_show_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
@@ -43,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_085737) do
     t.string "row"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seat_number"
     t.index ["screen_id"], name: "index_screen_layouts_on_screen_id"
     t.index ["seat_id"], name: "index_screen_layouts_on_seat_id"
   end
@@ -51,6 +63,18 @@ ActiveRecord::Schema.define(version: 2021_04_13_085737) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seat_allotments", force: :cascade do |t|
+    t.bigint "screen_layout_id"
+    t.bigint "show_id"
+    t.bigint "booking_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_seat_allotments_on_booking_id"
+    t.index ["screen_layout_id"], name: "index_seat_allotments_on_screen_layout_id"
+    t.index ["show_id"], name: "index_seat_allotments_on_show_id"
   end
 
   create_table "seats", force: :cascade do |t|
@@ -91,8 +115,13 @@ ActiveRecord::Schema.define(version: 2021_04_13_085737) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "bookings", "shows"
+  add_foreign_key "bookings", "users"
   add_foreign_key "screen_layouts", "screens"
   add_foreign_key "screen_layouts", "seats"
+  add_foreign_key "seat_allotments", "bookings"
+  add_foreign_key "seat_allotments", "screen_layouts"
+  add_foreign_key "seat_allotments", "shows"
   add_foreign_key "shows", "movies"
   add_foreign_key "shows", "screens"
 end

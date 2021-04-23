@@ -1,0 +1,36 @@
+<div class="shows_page">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <% @shows.each_with_index do |(date, shows), index|%>
+            <input type="radio" class="btn-check date" name="date" id="<%= index %>" autocomplete="off" <%='checked' if index.zero? %> value="<%= date %>" data="<%= @movie.id %>" >
+            <label class="btn btn-outline-primary movie-date" for="<%= index %>"><%= date.strftime('%d%^a') %></label>
+          <% end %>
+        </div>      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="time_slots" style="height: 50px;"></div>
+  <div class="screen_layout"></div>
+</div>
+
+<script type="text/javascript">
+  function getShowTimeSlots(){
+    const date = $('.date:checked').val();
+    const movieId = "<%= @movie.id %>";
+    getAjax(`/movies/${movieId}+/shows/get_shows`, { date: date })
+  }
+
+  $(document).ready(function(){
+    getShowTimeSlots();
+    $('.date').click(function() {
+      getShowTimeSlots();
+    });
+  });
+</script>

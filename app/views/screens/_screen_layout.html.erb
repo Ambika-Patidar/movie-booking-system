@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="screen_layout s-layout">
+    <%= hidden_field_tag :show_id, @show.id %>
+    <%= hidden_field_tag :screen_id, @show.screen.id %>
+    <% @screen_layout.sort_by(&:first).reverse.each do |category, rows|%>
+      <div class="category" data-price="<%= @price.send("#{category}")%>">
+        <div class="header">
+          <%= category %> - <%= currency_format(@price.send("#{category}"))%>
+        </div>
+        <% rows.sort_by(&:first).each do |row, layouts|%>
+          <div class="seat-row">
+            <span class="sc-row"><%= row %></span>
+            <span class="seats">
+              <% layouts.sort_by(&:seat_number).each do |layout|%>
+                <span class="seat_col <%= seat_status layout.status %>" data-seat-id="<%= layout.id %>"><%= layout.seat_number%></span>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="screen-sight">
+      <%= image_tag 'screen'%>
+    </div>
+  </div>
+</div>
+<div class="price" style="display:none">
+  <button type="button" class="btn pay-price">Pay ₹ <span class="figure"></span></button>
+</div>
+
+<script type="text/javascript">
+  
+</script>

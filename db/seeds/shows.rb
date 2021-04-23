@@ -20,10 +20,10 @@ SHOWS = [{ screen_id: SCREEN_IDS[0], movie_id: MOVIE_IDS[0], base_price: 100, ti
          { screen_id: SCREEN_IDS[3], movie_id: MOVIE_IDS[7], base_price: 180, time_slot: 1 },
          { screen_id: SCREEN_IDS[3], movie_id: MOVIE_IDS[7], base_price: 180, time_slot: 3 }].freeze
 
-SCHEDULE_DATES = [ Date.today, Date.tomorrow]
+SHOW_DATES = [ Date.today, Date.tomorrow]
 
 SHOWS.each do |hash|
-  SCHEDULE_DATES.each do |show_date|
+  SHOW_DATES.each do |show_date|
     Show.find_or_create_by(hash.merge(show_date: show_date))
   end
 end

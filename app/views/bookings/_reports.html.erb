@@ -1,0 +1,35 @@
+<table class="table">
+  <thead class="table-dark">
+    <tr> 
+      <th>User</th>
+      <th>Seats</th>
+      <th>Movie</th>
+      <th>Screen</th>
+      <th>Show Date</th>
+      <th>Show Time</th>
+      <th>Booking Id</th>
+      <th>Ticket Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.user.email %></td>
+        <td><%= booking.seat_allotments.count %></td>
+        <td><%= booking.movie.name %></td>
+        <td><%= booking.screen.name %></td>
+        <td><%= booking.show.show_date %></td>
+        <td><%= booking.show.time_slot %></td>
+        <td><%= booking.booking_id %></td>
+        <td><%= link_to booking_path(booking), remote: true, class: 'btn btn-primary btn-sm' do %>
+            <i class="fa fa-ticket"></i>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="custom_pagination">
+  <%= will_paginate @bookings, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

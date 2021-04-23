@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  *= require toastr
+ *= require daterangepicker
  */
  
 @import "bootstrap";
 @import "plugins/flickity";
 @import "font-awesome";
-
+@import "style"

@@ -1,4 +1,4 @@
-<div class="container movies">
+<div class="container">
   <div class="row">
     <% @movies.each do |movie| %>
       <div class = "col-md-3" >
@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= movie.name %></h5>
             <p class="card-text"><%= movie.description.truncate(75) %></p>
-            <%= link_to "Shows", '', class:"btn btn-primary" %>
+            <%= link_to "Shows", movie_shows_path(movie), class:"btn btn-primary" %>
           </div>
         </div>
       </div>

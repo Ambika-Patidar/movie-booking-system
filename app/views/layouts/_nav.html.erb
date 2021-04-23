@@ -1,19 +1,30 @@
 <header>
-  <div class="navbar custom_navbar">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <%= link_to root_path, class: 'navbar-brand' do %>
-        <h3 style="font-family: 'Audiowide', cursive;">MOVIES</h3>
+        <h3 style="font-family: 'Audiowide', cursive; color: darkred">MOVIES</h3>
       <% end %>
       <% if current_user %>
-        <%= link_to destroy_user_session_path, method: "delete" do %>
-          <%= fa_icon ' 2x sign-out' %>
-        <% end %>
-      <% else %>
-        <form class="d-flex" >
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Movies', movies_path, class: "nav-link active" %>
+            </li>
+            <% link_name = current_user&.has_role?(:admin) ? 'Reports' : 'My Bookings' %>
+              <li class="nav-item">
+                <%= link_to "#{link_name}", bookings_path, class: "nav-link active" %>
+              </li>
+          </ul>
+          <%= link_to destroy_user_session_path, method: "delete" do %>
+            <%= fa_icon '2x sign-out' %>
+          <% end %>
+        <% else %>
+          <form class="d-flex">
             <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary sign_up'%>
             <%= link_to "Login", new_user_session_path, class: 'btn btn-secondary' %>
-        </form>
+          </form>
+        </div>
       <% end %>
     </div>
-  </div>
+  </nav>
 </header>
